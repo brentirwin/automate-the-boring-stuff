@@ -35,4 +35,41 @@
 14. **How do you make a regular expression case-insensitive?**  
   You can pass `re.IGNORECASE` or `re.I` as a second argument to `re.compile()`.
 15. **What does the `.` character normally match? What does it match if `re.DOTALL` is passed as the second argument to `re.compile()`?**  
-  
+  The `.` is called a *wildcard* and will match any character except for a newline. By passing `re.DOTALL` as teh second argument to `re.compile()`, you can maek the dot character match *all* characters, including the newline character.
+16. **What is the difference between these two: `.*` and `.*?`?**  
+  `.*` stands in for anything in *greedy* mode. `.*?` matches any and all text in a *nongreedy* fashion.
+17. **What is the character class syntax to match all numbers and lowercase letters?**  
+  `[a-z0-9]`
+18. **If `numRegex = re.compile('r\d+')`, what will `numRegex.sub('X', '12 drummers, 11 pipers, five rings, 3 hens')` return?**  
+  `'X drummers, X pipers, five rings, X hens'`
+19. **What does passing `re.VERBOSE` as the second argument to `re.compile()` allow you to do?**  
+  It allows you to include whitespace and commentsthat the `re.compile()` function will ignore.
+20. **How would you write a regex that matches a number with commas for every three digits? It must match the following:**  
+  * `'42'`
+  * `'1,234'`
+  * `'6,368,745'`  
+  **but not the following:**
+  * `'12,34,367'` (which only has two digits between the commas)
+  * `'1234'` (which lacks commas)  
+  `re.compile(r'\d{1,3}(,\d{3})*')`
+21. **How would you write a regex that matches the full name of someone whose last name is Nakamoto? You can assume that the first name that comes before it will always be one word that begins with a captial letter. The regex must match the following:**
+  * `'Satoshi Nakamoto'`
+  * `'Alice Nakamoto'`
+  * `'Robocop Nakamoto'`  
+  **but not the following:**
+  * `'satoshi Nakamoto'` (where the first name is not capitalized)
+  * `'Mr. Nakamoto'` (where the preceding word has a nonletter character)
+  * `'Nakamoto'` (which has no first name)
+  * `'Satoshi nakamoto'` (where Nakamoto is not capitalized)  
+  `re.compile(r'[A-Z][a-z]* Nakamoto')`
+22. **How would you write a regex that matches a sentence where the first word is either *Alice*, *Bob*, or *Carol*; the second word is either *eats*, *pets*, or *throws*; the third word is *apples*, *cats*, or *baseballs*; and the sentence ends with a peroid? This regex should be case-insensitive. It must match the following:**
+  * `'Alice eats apples.'`
+  * `'Bob pets cats.'`
+  * `'Carol throws baseballs.'`
+  * `'Alice throws Apples.'`
+  * `'BOB EATS CATS.'`  
+  **but not the following:**
+  * `'Robocop eats apples.'`
+  * `'ALICE THROWS FOOTBALLS.'`
+  * `'Carol eats 7 cats.'`  
+  `re.compile(r'(Alice|Bob|Carol) (eats|pets|throws) (apples|baseballs|cats).', re.IGNORECASE)`
