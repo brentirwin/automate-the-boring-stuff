@@ -1,5 +1,10 @@
 #! python3
-# Extended version for exercise
+'''
+Extended version for exercise - Extend the multiclipboard program in this
+chapter so that it has a delete <keyword> command line argument that will
+delete a keyword from the shelf. Then add a delete command line argument that
+will delete all keywords.
+'''
 # mcb-e.pyw - Saves and loads pieces of text to the clipboard.
 # Usage:    py.exe mcb.pyw save <keyboard> - Saves clipboard to keyword.
 #           py.exe mcb.pyw <keyword> - Loads keyword to clipboard.
